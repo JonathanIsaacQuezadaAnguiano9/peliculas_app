@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/screens/details_screen.dart';
-import 'package:peliculas_app/screens/home_scree.dart';
+import 'package:peliculas_app/screens/routes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,11 +8,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color appBarColor = const Color(0x001e2227);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Peliculas',
+      title: 'Películas',
       initialRoute: 'home',
-      routes: {'home': (_) => HomeScreen(), 'details': (_) => DetailsScreen()},
+      routes: {
+        'home': (_) => const HomeScreen(),
+        'details': (_) => const DetailsScreen()
+      },
+      theme: ThemeData.dark()
+          .copyWith(appBarTheme: AppBarTheme(color: appBarColor)),
     );
   }
 }

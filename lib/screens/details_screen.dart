@@ -5,9 +5,12 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(
-        child: Text('detalles'),
+    return Scaffold(
+      // ignore: avoid_unnecessary_containers
+      body: Container(
+        child: const Center(
+          child: Text('detalles'),
+        ),
       ),
     );
   }
