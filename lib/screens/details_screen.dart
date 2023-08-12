@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas_app/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -22,6 +23,8 @@ class DetailsScreen extends StatelessWidget {
             delegate: SliverChildListDelegate([
           _PosterAndTitle(),
           _Overview(),
+          CastingCard(),
+          _Overview(),
         ])),
       ],
     ));
@@ -31,7 +34,7 @@ class DetailsScreen extends StatelessWidget {
 class _CustomAppBard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const SliverAppBar(
+    return SliverAppBar(
       backgroundColor: Colors.indigo,
       expandedHeight: 200,
       pinned: true,
@@ -39,11 +42,14 @@ class _CustomAppBard extends StatelessWidget {
       floating: false,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
-        title: Text(
-          'movie.title',
-          style: TextStyle(color: Colors.amber),
+        title: Container(
+          padding: const EdgeInsetsDirectional.all(5),
+          child: const Text(
+            'movie.title',
+            style: TextStyle(color: Colors.amber),
+          ),
         ),
-        background: FadeInImage(
+        background: const FadeInImage(
           placeholder: AssetImage('assets/loading.gif'),
           image: AssetImage('assets/loading.gif'),
           fit: BoxFit.cover,
@@ -65,7 +71,7 @@ class _PosterAndTitle extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: const FadeInImage(
             placeholder: AssetImage('assets/loading.gif'),
-            image: NetworkImage('https://via.placeholder.com/200x300'),
+            image: AssetImage('assets/loading.gif'),
             height: 200,
             width: 100,
           ),

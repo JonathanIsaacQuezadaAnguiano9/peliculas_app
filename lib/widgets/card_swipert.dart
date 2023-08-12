@@ -32,8 +32,8 @@ class CardSwiper extends StatelessWidget {
                 child: const FadeInImage(
                   placeholder:
                       AssetImage('assets/no-image.jpg'), //imagen de carga
-                  image: NetworkImage(
-                      'https://via.placeholder.com/300x400'), //imagen de la película
+                  image:
+                      AssetImage('assets/no-image.jpg'), //imagen de la película
                   fit: BoxFit.cover, //redondeo del border radius
                 ),
               ),
