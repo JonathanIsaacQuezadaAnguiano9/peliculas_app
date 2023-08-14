@@ -1,50 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas_app/models/models.dart';
+
+import '../models/movie.dart';
 
 class MovieSlider extends StatelessWidget {
-  const MovieSlider({super.key});
-
+  final List<Movie> movies;
+  final String? title;
+  const MovieSlider({super.key, required this.movies, this.title});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size * .5;
     return Container(
       width: double.infinity,
       height: size.height,
-      color: const Color.fromARGB(255, 46, 39, 126),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, //
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 20, vertical: 20), //margen del texto
-              child: Text(
-                'Populares',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+      color: Color.fromARGB(255, 0, 0, 4),
+      child: SizedBox(
+        height: size.height / 2,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start, //
+            children: [
+              if (title != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 25, vertical: 20), //margen del texto
+                  child: Text(
+                    title!,
+                    style: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              Expanded(
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: movies.length,
+                    itemBuilder: (_, int index) => _MoviePoster(
+                          movie: movies[index],
+                        )),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (_, int index) => const _MoviePoster()),
-            ),
-          ]),
+            ]),
+      ),
     );
   }
 }
 
 class _MoviePoster extends StatelessWidget {
-  const _MoviePoster();
+  final Movie movie;
 
+  const _MoviePoster({required this.movie});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () =>
           Navigator.pushNamed(context, 'details', arguments: 'movie_name'),
       child: Container(
+        height: 100,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25), color: Colors.white),
+            borderRadius: BorderRadius.circular(25),
+            color: Color.fromARGB(255, 33, 16, 89)),
         width: 130,
-        height: 190,
 
         margin: const EdgeInsets.symmetric(
           horizontal: 10,
@@ -56,26 +69,26 @@ class _MoviePoster extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, 'details',
                 arguments: 'movie_name'),
-            child: const ClipRRect(
-              borderRadius:
-                  BorderRadiusDirectional.vertical(top: Radius.circular(25)),
+            child: ClipRRect(
+              borderRadius: const BorderRadiusDirectional.vertical(
+                  top: Radius.circular(25)),
               child: FadeInImage(
                   //Lugar donde se encuentran las imágenes
                   placeholder:
-                      AssetImage('assets/no-image.jpg'), //imagen de carga
-                  image: AssetImage(
-                      'assets/loading.gif'), //imagen que se va a mostrar
+                      const AssetImage('assets/no-image.jpg'), //imagen de carga
+                  image: NetworkImage(
+                      movie.fullPoosterimg), //imagen que se va a mostrar
                   width: 130, //anchura
-                  height: 190, //altura
+                  height: 250, //altura
 
                   fit: BoxFit.cover),
             ),
           ),
 
-          const Text(
-            'Star wars \n La vengananza del metalero cuya galleta fue consumida por el imperio ',
-            maxLines: 50,
-            style: TextStyle(color: Color.fromARGB(171, 70, 18, 1)),
+          Text(
+            movie.title,
+            maxLines: 5,
+            style: TextStyle(color: Color.fromARGB(243, 35, 255, 10)),
           ) //Texto de describe la película
         ]),
         ////////////////////////////////////////////////////////////////////////////////////////////////
