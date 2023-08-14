@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'Películas',
       initialRoute: 'home',
       routes: {
-        'home': (_) => const HomeScreen(),
+        'home': (_) => HomeScreen(),
         'details': (_) => const DetailsScreen()
       },
       theme: ThemeData.dark()
