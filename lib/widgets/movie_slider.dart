@@ -51,12 +51,13 @@ class _MoviePoster extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () =>
-          Navigator.pushNamed(context, 'details', arguments: 'movie_name'),
+          Navigator.pushNamed(context, 'details', arguments: movie.toString()),
       child: Container(
         height: 100,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: Color.fromARGB(255, 33, 16, 89)),
+          borderRadius: BorderRadius.circular(25),
+          color: Colors.amber,
+        ),
         width: 130,
 
         margin: const EdgeInsets.symmetric(
@@ -67,8 +68,8 @@ class _MoviePoster extends StatelessWidget {
         ///Contenido de los posters
         child: Column(children: [
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details',
-                arguments: 'movie_name'),
+            onTap: () =>
+                Navigator.pushNamed(context, 'details', arguments: movie),
             child: ClipRRect(
               borderRadius: const BorderRadiusDirectional.vertical(
                   top: Radius.circular(25)),
@@ -88,7 +89,7 @@ class _MoviePoster extends StatelessWidget {
           Text(
             movie.title,
             maxLines: 5,
-            style: TextStyle(color: Color.fromARGB(243, 35, 255, 10)),
+            style: TextStyle(color: Colors.black),
           ) //Texto de describe la película
         ]),
         ////////////////////////////////////////////////////////////////////////////////////////////////

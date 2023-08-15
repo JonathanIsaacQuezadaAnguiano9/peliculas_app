@@ -27,7 +27,7 @@ class CardSwiper extends StatelessWidget {
       color: Color.fromARGB(255, 6, 5, 0),
       child: SizedBox(
           width: double.infinity, // ancho posible de la pantalla
-          height: size.height * .7, //alto posible /2
+          height: size.height * .7, //alto posible *.7
           child: Swiper(
             itemCount: movies.length, //items que se encuentran en el carrusel
             layout: SwiperLayout.STACK, //stack de imágenes
@@ -43,8 +43,9 @@ class CardSwiper extends StatelessWidget {
               //!Construcción del carrusel
               return GestureDetector(
                 onTap: () => Navigator.pushNamed(context, 'details',
-                    arguments:
-                        'movie_name'), // Al presionar se mandan los argumentos del carrusel a la pantalla 'details'
+                    arguments: movie), // Al presionar se mandan los
+                //argumentos del
+                //carrusel a la pantalla 'details'
                 child: ClipRRect(
                   //widget que nos permite hacer la animación del carrusel
                   borderRadius: BorderRadius.circular(30),

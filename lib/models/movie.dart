@@ -34,8 +34,17 @@ class Movie {
   int voteCount;
 
   get fullPoosterimg {
-    if (this.posterPath != null)
+    if (posterPath != null) {
       return 'https://image.tmdb.org/t/p/w500${this.posterPath}';
+    }
+
+    return 'https://i.stack.imgur.com/GNhx0.png';
+  }
+
+  get fullBackdropPath {
+    if (posterPath != null) {
+      return 'https://image.tmdb.org/t/p/w500${this.posterPath}';
+    }
 
     return 'https://i.stack.imgur.com/GNhx0.png';
   }
