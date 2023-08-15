@@ -75,8 +75,8 @@ class _MoviePoster extends StatelessWidget {
                   top: Radius.circular(25)),
               child: FadeInImage(
                   //Lugar donde se encuentran las imágenes
-                  placeholder:
-                      const AssetImage('assets/no-image.jpg'), //imagen de carga
+                  placeholder: const AssetImage(
+                      'assets/cat-space.gif'), //imagen de carga
                   image: NetworkImage(
                       movie.fullPoosterimg), //imagen que se va a mostrar
                   width: 130, //anchura
@@ -88,8 +88,11 @@ class _MoviePoster extends StatelessWidget {
 
           Text(
             movie.title,
-            maxLines: 5,
-            style: TextStyle(color: Colors.black),
+            maxLines: 3,
+            style: const TextStyle(
+              color: Colors.black,
+            ),
+            overflow: TextOverflow.ellipsis,
           ) //Texto de describe la película
         ]),
         ////////////////////////////////////////////////////////////////////////////////////////////////

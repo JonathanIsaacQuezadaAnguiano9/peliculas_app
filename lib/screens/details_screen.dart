@@ -50,7 +50,7 @@ class _CustomAppBard extends StatelessWidget {
           ),
         ),
         background: FadeInImage(
-          placeholder: AssetImage('assets/loading.gif'),
+          placeholder: AssetImage('assets/cat-space.gif'),
           image: NetworkImage(movie.fullBackdropPath),
           fit: BoxFit.cover,
         ),
@@ -71,7 +71,7 @@ class _PosterAndTitle extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: FadeInImage(
-              placeholder: AssetImage('assets/loading.gif'),
+              placeholder: AssetImage('assets/cat-space.gif'),
               image: NetworkImage(movie.fullBackdropPath),
               height: 300,
               width: MediaQuery.of(context).size.width / 2.5),
