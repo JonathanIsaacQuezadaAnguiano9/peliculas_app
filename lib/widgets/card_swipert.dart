@@ -24,7 +24,7 @@ class CardSwiper extends StatelessWidget {
     ///////////////////////////////////////////////////////////////////////////
     //!configuración de la pantalla
     return Container(
-      color: Color.fromARGB(255, 6, 5, 0),
+      color: const Color.fromARGB(255, 6, 5, 0),
       child: SizedBox(
           width: double.infinity, // ancho posible de la pantalla
           height: size.height * .7, //alto posible *.7
@@ -39,6 +39,7 @@ class CardSwiper extends StatelessWidget {
               ///////////////////////////////////////////////////////////////////
 
               final movie = movies[index];
+              movie.heroId = 'Swiper${movie.id}';
               ////////////////////////////
               //!Construcción del carrusel
               return GestureDetector(
@@ -46,19 +47,22 @@ class CardSwiper extends StatelessWidget {
                     arguments: movie), // Al presionar se mandan los
                 //argumentos del
                 //carrusel a la pantalla 'details'
-                child: ClipRRect(
-                  //widget que nos permite hacer la animación del carrusel
-                  borderRadius: BorderRadius.circular(30),
-                  child: FadeInImage(
-                    placeholder: const AssetImage(
-                        'assets/cat-space.gif'), //imagen de carga
-                    image: NetworkImage(
-                        movie.fullPoosterimg), //imagen de la película
-                    fit: BoxFit.cover, //redondeo del border radius
+                child: Hero(
+                  tag: movie.heroId!, // Se manda un identificador único
+                  child: ClipRRect(
+                    //widget que nos permite hacer la animación del carrusel
+                    borderRadius: BorderRadius.circular(30),
+                    child: FadeInImage(
+                      placeholder: const AssetImage(
+                          'assets/cat-space.gif'), //imagen de carga
+                      image: NetworkImage(
+                          movie.fullPoosterimg), //imagen de la película
+                      fit: BoxFit.cover, //redondeo del border radius
+                    ),
                   ),
                 ),
               );
-              ///////////////////////////////////////////////////////////////////
+              ////////////////////////////////////////////////////////////////////////
             },
           )),
     );

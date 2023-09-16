@@ -60,21 +60,25 @@ class _CustomAppBard extends StatelessWidget {
 }
 
 class _PosterAndTitle extends StatelessWidget {
+  String? detailsId;
   @override
   Widget build(BuildContext context) {
     final Movie movie = ModalRoute.of(context)?.settings.arguments as Movie;
     final textTheme = Theme.of(context).textTheme;
-
+    detailsId = 'details${movie.id}';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: FadeInImage(
-              placeholder: AssetImage('assets/cat-space.gif'),
-              image: NetworkImage(movie.fullBackdropPath),
-              height: 300,
-              width: MediaQuery.of(context).size.width / 2.5),
+        Hero(
+          tag: detailsId!,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: FadeInImage(
+                placeholder: AssetImage('assets/cat-space.gif'),
+                image: NetworkImage(movie.fullBackdropPath),
+                height: 300,
+                width: MediaQuery.of(context).size.width / 2.5),
+          ),
         ),
         const SizedBox(
           width: 15,

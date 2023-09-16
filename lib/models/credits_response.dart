@@ -61,7 +61,7 @@ class Cast {
     return 'https://i.stack.imgur.com/GNhxO.png';
   }
 
-  factory Cast.fromJson(String str) => Cast.fromMap(json.decode(str));
+  factory Cast.fromJson(String str) => Cast?.fromMap(json.decode(str));
 
   factory Cast.fromMap(Map<String, dynamic> json) => Cast(
         adult: json["adult"],
